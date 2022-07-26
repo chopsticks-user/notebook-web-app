@@ -1,5 +1,15 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  --header-height-to-body: 5%;
+  --main-components-padding: 5px;
+}
+
 body {
   margin: 0;
+  background-color: #2a2a2a;
+  font-size: 16;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +20,20 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.page-container {
+  height: 100vh;
+  width: 100%;
+  min-width: 1000px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  height: calc(100% - var(--header-height-to-body));
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }

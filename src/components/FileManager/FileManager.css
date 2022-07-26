@@ -1,0 +1,7 @@
+.file-manager-container {
+    height: 100%;
+    flex: auto;
+    padding: var(--main-components-padding);
+    overflow-x: hidden;
+    overflow-y: auto;
+}

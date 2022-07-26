@@ -1,0 +1,33 @@
+.debugger-container {
+    --resize-bar-heigth: 3px;
+    box-sizing: border-box;
+    height: 100%;
+    flex: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.debugger-section-container {
+    width: 100%;
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.debugger-section {
+    width: 100%;
+    height: calc(100% - var(--resize-bar-heigth));
+    padding: var(--main-components-padding);
+}
+
+#dbg-center {
+    height: 100%;
+}
+
+.debugger-section-container > span {
+    width: 100%;
+    height: var(--resize-bar-heigth);
+    cursor: row-resize;
+}

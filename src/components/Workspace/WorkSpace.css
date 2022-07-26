@@ -1,0 +1,34 @@
+/* #lcx {grid-area: top-bar;}
+#lcy {grid-area: left-bar;}
+#lcpi {grid-area: plane-info;}
+.space-2d-container {grid-area: space;}
+
+.work-space-container {
+  height: 100%;
+  border: var(--components-border);
+  border-radius: var(--components-border-radius);
+  background-color: var(--plane-background-color);
+  display: grid;
+  grid-template-columns: var(--work-space-bar-size) auto;
+  grid-template-rows: var(--work-space-bar-size) auto;
+  grid-template-areas: 
+  "plane-info top-bar"
+  "left-bar space";
+  overflow: auto;
+  color: var(--work-space-text-color);
+  font-size: var(--work-space-font-size);
+} */
+
+.workspace-container {
+  height: 100%;
+  display: flex;
+  flex: 4 auto;
+  flex-direction: row;
+  flex: 1px auto 1px;
+}
+
+.workspace {
+  height: 100%;
+  flex: 1;
+  padding: 5px;
+}
