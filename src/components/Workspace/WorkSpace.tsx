@@ -12,9 +12,7 @@ const WorkSpace: React.FC<WorkSpaceProps> = ({ setDebugInfo }) => {
 
   return (
     <div className="workspace-container" onClick={(e) => { setDebugInfo(e.clientX) }}>
-      <span id="wclr"></span>
       <div className="workspace"></div>
-      <span id="wcrr"></span>
     </div>
   )
 }

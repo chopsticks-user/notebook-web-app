@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import Split from "react-split";
 import Debugger from "./components/Debugger";
 import FileManager from "./components/FileManager";
 import Header from "./components/Header";
@@ -7,7 +8,6 @@ import WorkSpace from "./components/Workspace/WorkSpace";
 
 const themes = {
   dark: {
-    border: "1px solid gray",
     fileManagerBarColor: "#2a2a2a",
     fileManagerTextColor: "white",
     workspaceButtonColor: "#2a2a2a",
@@ -18,7 +18,6 @@ const themes = {
     debuggerGraphGridColor: "white"
   },
   light: {
-    border: "1px solid black",
     fileManagerBarColor: "#2a2a2a",
     fileManagerTextColor: "black",
     workspaceButtonColor: "#2a2a2a",
@@ -38,17 +37,19 @@ function App() {
 
   const toggleTheme = () => {
     setDarkTheme(prevDarkTheme => !prevDarkTheme);
+
   }
 
   return (
     <ThemeContext.Provider value={darkTheme ? themes.dark : themes.light}>
-      <div className="page-container" /* onDoubleClick={toggleTheme} */>
+      <div className="page-container" onDoubleClick={toggleTheme}>
         <Header />
-        <div className="main-container" style={{ backgroundColor: darkTheme ? "#282c34" : "white" }}>
+        <Split className="main-container" gutterSize={1} minSize={100} direction="horizontal"
+          style={{ backgroundColor: darkTheme ? "#1a1c1e" : "#fff" }}>
           <FileManager />
           <WorkSpace setDebugInfo={setDebugInfo} />
           <Debugger debugInfo={debugInfo} />
-        </div>
+        </Split>
       </div>
       <LoadingPage />
     </ThemeContext.Provider>

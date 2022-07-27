@@ -1,17 +1,10 @@
 .workspace-container {
   height: 100%;
   display: flex;
-  flex: 4 0 auto;
+  /* flex: 4 0 auto; */
   flex-direction: row;
   overflow: auto;
-  min-width: 800px;
-}
-
-.workspace-container>span {
-  width: 1px;
-  margin: 1px;
-  cursor: row-resize;
-  background-color: gray;
+  /* min-width: 800px; */
 }
 
 .workspace {

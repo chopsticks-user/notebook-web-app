@@ -1,4 +1,4 @@
-import React, { createRef, useContext, useEffect, useRef, useState } from "react"
+import React, { createRef, useContext } from "react"
 import "./Debugger.css"
 import { ThemeContext } from "../../App"
 import Split from "react-split"
@@ -9,33 +9,14 @@ type DebuggerProps = {
 
 const Debugger: React.FC<DebuggerProps> = ({ debugInfo }) => {
   const theme = useContext(ThemeContext);
-  const [topHeight, setTopHeight] = useState<number>();
-  const [bottomHeight, setBottomHeight] = useState<number>();
 
   return (
-    // <Split gutterSize={2} minSize={0} className="debugger-container" style={{ color: theme.debuggerTextColor }}>
-    //   <div className="debugger-section-container">
-
-    //     {/* <div className="debugger-section" id="dbg-top">
-
-    //     </div> */}
-        
-    //   </div>
-    //   <div className="debugger-section-container">
-
-    //     {/* <div className="debugger-section" id="dbg-center">
-
-    //     </div> */}
-    //   </div>
-    //   <div className="debugger-section-container">
-
-    //     {/* <div className="debugger-section" id="dbg-bottom">
-
-    //     </div> */}
-    //   </div>
-
-    // </Split>
-    <div></div>
+    <Split gutterSize={1} minSize={20} direction="vertical"
+      className="debugger-container" style={{ color: theme.debuggerTextColor }}>
+      <div className="debugger-section-container"></div>
+      <div className="debugger-section-container"></div>
+      <div className="debugger-section-container"></div>
+    </Split>
   )
 }
 

@@ -2,7 +2,7 @@
     --resize-bar-heigth: 3px;
     box-sizing: border-box;
     height: 100%;
-    flex: auto;
+    /* flex: auto; */
     overflow-x: hidden;
     overflow-y: auto;
     display: flex;
@@ -24,4 +24,9 @@
 
 #dbg-center {
     height: 100%;
+}
+
+.gutter-vertical {
+    cursor: row-resize;
+    background-color: #505558;
 }
