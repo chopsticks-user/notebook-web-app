@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Split from "react-split";
-import Debugger from "./components/Debugger";
+import DebugView from "./components/DebugView";
 import FileManager from "./components/FileManager";
 import Header from "./components/Header";
 import LoadingPage from "./components/LoadingPage";
@@ -34,7 +34,7 @@ function App() {
           style={{ backgroundColor: darkTheme ? "#1a1c1e" : "#fff" }}>
           <FileManager />
           <WorkSpace setDebugInfo={setDebugInfo} />
-          <Debugger debugInfo={debugInfo} />
+          <DebugView debugInfo={debugInfo} />
         </Split>
       </div>
       <LoadingPage />

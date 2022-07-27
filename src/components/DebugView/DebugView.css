@@ -1,4 +1,4 @@
-.debugger-container {
+.debug-view-container {
     --resize-bar-heigth: 3px;
     --section-header-height: 25px;
     box-sizing: border-box;
@@ -9,14 +9,14 @@
     flex-direction: column;
 }
 
-.debugger-section-container {
+.debug-view-section-container {
     width: 100%;
     flex: auto;
     display: flex;
     flex-direction: column;
 }
 
-.debugger-section-header {
+.debug-view-section-header {
     width: 100%;
     max-height: var(--section-header-height);
     min-height: var(--section-header-height);
@@ -26,7 +26,7 @@
     align-items: center;
 }
 
-.debugger-section-content {
+.debug-view-section-content {
     width: 100%;
     flex: auto;
     padding: var(--main-components-padding);
@@ -46,3 +46,4 @@
 .dropdown-icon-arrow:hover {
     transform: rotate(90deg);
 }
+
