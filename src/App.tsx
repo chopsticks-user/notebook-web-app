@@ -42,9 +42,9 @@ function App() {
 
   return (
     <ThemeContext.Provider value={darkTheme ? themes.dark : themes.light}>
-      <div className="page-container" /* onClick={toggleTheme}*/>
+      <div className="page-container" /* onDoubleClick={toggleTheme} */>
         <Header />
-        <div className="main-container" style={{ backgroundColor: darkTheme ? "black" : "white" }}>
+        <div className="main-container" style={{ backgroundColor: darkTheme ? "#282c34" : "white" }}>
           <FileManager />
           <WorkSpace setDebugInfo={setDebugInfo} />
           <Debugger debugInfo={debugInfo} />

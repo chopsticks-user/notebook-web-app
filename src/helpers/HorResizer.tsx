@@ -1,13 +1,14 @@
 import React from "react"
 
 type HorResizerProps = {
-
+  width: number,
+  color: string
 }
 
-const HorResizer: React.FC<HorResizerProps> = () => {
+const HorResizer: React.FC<HorResizerProps> = ({ width, color }) => {
   return (
-    <span></span>
-  )
+    <span className=""></span>
+  );
 }
 
 export default HorResizer

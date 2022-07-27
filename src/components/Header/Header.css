@@ -1,4 +1,5 @@
 .header-container {
     height: var(--header-height-to-body);
+    min-height: 40px;
     margin-bottom: var(--body-padding);
 }

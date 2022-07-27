@@ -25,9 +25,3 @@
 #dbg-center {
     height: 100%;
 }
-
-.debugger-section-container > span {
-    width: 100%;
-    height: var(--resize-bar-heigth);
-    cursor: row-resize;
-}

@@ -11,17 +11,10 @@ const WorkSpace: React.FC<WorkSpaceProps> = ({ setDebugInfo }) => {
   // const [width, setWidth] = useState<number>();
 
   return (
-    <div className="workspace-container"
-      style={{
-        borderLeft: theme.border,
-        borderRight: theme.border,
-        // width: `${200}px`
-      }}
-      onClick={(e) => { setDebugInfo(e.clientX) }}
-    >
-      <div className="workspace">
-
-      </div>
+    <div className="workspace-container" onClick={(e) => { setDebugInfo(e.clientX) }}>
+      <span id="wclr"></span>
+      <div className="workspace"></div>
+      <span id="wcrr"></span>
     </div>
   )
 }

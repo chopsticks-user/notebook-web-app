@@ -1,6 +1,7 @@
 import React, { createRef, useContext, useEffect, useRef, useState } from "react"
 import "./Debugger.css"
 import { ThemeContext } from "../../App"
+import Split from "react-split"
 
 type DebuggerProps = {
   debugInfo: any;
@@ -12,35 +13,29 @@ const Debugger: React.FC<DebuggerProps> = ({ debugInfo }) => {
   const [bottomHeight, setBottomHeight] = useState<number>();
 
   return (
-    <div className="debugger-container" style={{ color: theme.debuggerTextColor }}>
-      <div className="debugger-section-container"
-        style={{
-          borderBottom: `${theme.border}`,
-          height: `${topHeight}px`
-        }}>
-        <div className="debugger-section" id="dbg-top">
+    // <Split gutterSize={2} minSize={0} className="debugger-container" style={{ color: theme.debuggerTextColor }}>
+    //   <div className="debugger-section-container">
 
-        </div>
-        <span style={{ backgroundColor: theme.border }} onClick={() => setTopHeight(500)}></span>
-      </div>
-      <div className="debugger-section-container"
-        style={{
-          borderBottom: `${theme.border}`
-        }}>
-        <div className="debugger-section" id="dbg-center">
+    //     {/* <div className="debugger-section" id="dbg-top">
 
-        </div>
-      </div>
-      <div className="debugger-section-container"
-        style={{
-          height: `${bottomHeight}px`
-        }}>
-        <span style={{ backgroundColor: theme.border }} onClick={() => setBottomHeight(500)}></span>
-        <div className="debugger-section" id="dbg-bottom">
+    //     </div> */}
+        
+    //   </div>
+    //   <div className="debugger-section-container">
 
-        </div>
-      </div>
-    </div>
+    //     {/* <div className="debugger-section" id="dbg-center">
+
+    //     </div> */}
+    //   </div>
+    //   <div className="debugger-section-container">
+
+    //     {/* <div className="debugger-section" id="dbg-bottom">
+
+    //     </div> */}
+    //   </div>
+
+    // </Split>
+    <div></div>
   )
 }
 
