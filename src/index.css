@@ -36,9 +36,16 @@ code {
   display: flex;
 }
 
+.gutter {
+  background-color: #505558;
+}
+
 .gutter-horizontal {
   cursor: col-resize;
-  background-color: #505558;
+}
+
+.gutter-vertical {
+  cursor: row-resize;
 }
 
 .gutter:hover {

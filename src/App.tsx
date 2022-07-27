@@ -8,24 +8,10 @@ import WorkSpace from "./components/Workspace/WorkSpace";
 
 const themes = {
   dark: {
-    fileManagerBarColor: "#2a2a2a",
-    fileManagerTextColor: "white",
-    workspaceButtonColor: "#2a2a2a",
-    workspaceLineBorderColor: "white",
-    workspaceTextColor: "white",
-    debuggerBarColor: "black",
-    debuggerTextColor: "white",
-    debuggerGraphGridColor: "white"
+    textColor: "#fff"
   },
   light: {
-    fileManagerBarColor: "#2a2a2a",
-    fileManagerTextColor: "black",
-    workspaceButtonColor: "#2a2a2a",
-    workspaceLineBorderColor: "black",
-    workspaceTextColor: "black",
-    debuggerBarColor: "white",
-    debuggerTextColor: "black",
-    debuggerGraphGridColor: "black"
+    textColor: "#000000"
   }
 };
 

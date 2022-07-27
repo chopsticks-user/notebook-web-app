@@ -8,7 +8,6 @@ type WorkSpaceProps = {
 
 const WorkSpace: React.FC<WorkSpaceProps> = ({ setDebugInfo }) => {
   const theme = useContext(ThemeContext);
-  // const [width, setWidth] = useState<number>();
 
   return (
     <div className="workspace-container" onClick={(e) => { setDebugInfo(e.clientX) }}>
