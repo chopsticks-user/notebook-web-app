@@ -2,4 +2,16 @@
     height: var(--header-height-to-body);
     min-height: 40px;
     margin-bottom: var(--body-padding);
+    display: flex;
+}
+
+.header-homepage-shortcut {
+    height: 100%;
+    flex: 1;
+    background-color: antiquewhite;
+}
+
+.header-section-container {
+    height: 100%;
+    flex: 3;
 }

@@ -31,7 +31,8 @@ function App() {
       <div className="page-container" onDoubleClick={toggleTheme}>
         <Header />
         <Split className="main-container" gutterSize={1} minSize={100} direction="horizontal"
-          style={{ backgroundColor: darkTheme ? "#1a1c1e" : "#fff" }}>
+          style={{ backgroundColor: darkTheme ? "#1a1c1e" : "#fff" }}
+        >
           <FileManager />
           <WorkSpace setDebugInfo={setDebugInfo} />
           <DebugView debugInfo={debugInfo} />

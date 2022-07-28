@@ -15,9 +15,9 @@ const DebugView: React.FC<DebugViewProps> = ({ debugInfo }) => {
       className="debug-view-container"
       style={{ color: theme.textColor }}
     >
-      <DebugSection domElementID="variables" sectionName="VARIABLES" feature={<Feature />} />
-      <DebugSection domElementID="watch-list" sectionName="WATCH LIST" feature={<Feature />} />
-      <DebugSection domElementID="timeline" sectionName="TIMELINE" feature={<Feature />} />
+      <DebugSection domElementID="variables" sectionName="VARIABLES" functionality={<Feature />} />
+      <DebugSection domElementID="watch-list" sectionName="WATCH LIST" functionality={<Feature />} />
+      <DebugSection domElementID="timeline" sectionName="TIMELINE" functionality={<Feature />} />
     </Split>
   );
 }
@@ -25,10 +25,10 @@ const DebugView: React.FC<DebugViewProps> = ({ debugInfo }) => {
 type DebugSectionProps = {
   domElementID: string;
   sectionName: string;
-  feature: ReactElement<any>;
+  functionality: ReactElement<any>;
 }
 
-const DebugSection: React.FC<DebugSectionProps> = ({ domElementID, sectionName, feature }) => {
+const DebugSection: React.FC<DebugSectionProps> = ({ domElementID, sectionName, functionality }) => {
   const dropDownIcon: string = ">";
   return (
     <div className="debug-view-section-container"
@@ -39,7 +39,7 @@ const DebugSection: React.FC<DebugSectionProps> = ({ domElementID, sectionName, 
         <b>{sectionName}</b>
       </header>
       <div className="debug-view-section-content">
-        {feature}
+        {functionality}
       </div>
     </div>
   );
