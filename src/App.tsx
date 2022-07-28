@@ -8,38 +8,42 @@ import WorkSpace from "./components/Workspace/WorkSpace";
 
 const themes = {
   dark: {
+    backgroundColor: "#1a1c1e",
     textColor: "#fff"
   },
   light: {
+    backgroundColor: "#fff",
     textColor: "#000000"
   }
 };
 
-export const ThemeContext = React.createContext(themes.dark);
-
 function App() {
-  const [darkTheme, setDarkTheme] = useState(true);
-  const [debugInfo, setDebugInfo] = useState();
+  const [darkTheme, setDarkTheme] = useState<boolean>(true);
+  const [debugInfo, setDebugInfo] = useState<any[]>([]);
+  let currentTheme = darkTheme ? themes.dark : themes.light;
 
   const toggleTheme = () => {
     setDarkTheme(prevDarkTheme => !prevDarkTheme);
-
   }
 
+  useEffect(() => {
+    currentTheme = darkTheme ? themes.dark : themes.light;
+  }, [darkTheme]);
+
   return (
-    <ThemeContext.Provider value={darkTheme ? themes.dark : themes.light}>
+    <>
       <div className="page-container" onDoubleClick={toggleTheme}>
         <Header />
         <Split className="main-container" gutterSize={1} minSize={0} direction="horizontal"
-          style={{ backgroundColor: darkTheme ? "#1a1c1e" : "#fff" }}
+          style={{ backgroundColor: currentTheme.backgroundColor }}
         >
           <FileManager />
-          <WorkSpace setDebugInfo={setDebugInfo} />
-          <DebugView debugInfo={debugInfo} />
+          <WorkSpace setDebugInfo={setDebugInfo} theme={currentTheme} />
+          <DebugView debugInfo={debugInfo} theme={currentTheme} />
         </Split>
       </div>
       <LoadingPage />
-    </ThemeContext.Provider>
+    </>
   );
 }
 

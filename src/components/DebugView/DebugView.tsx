@@ -1,26 +1,23 @@
 import React, { ReactElement, useContext, useEffect, useRef, useState } from "react"
-import { ThemeContext } from "../../App"
 import Split from "react-split"
 import "./DebugView.css"
 
 type DebugViewProps = {
-  debugInfo: any;
+  debugInfo: any[];
+  theme: any;
 }
 
-const DebugView: React.FC<DebugViewProps> = ({ debugInfo }) => {
-  const theme = useContext(ThemeContext);
+const DebugView: React.FC<DebugViewProps> = ({ debugInfo, theme }) => {
   const variables = useRef<any[]>([]);
 
   useEffect(() => {
-    if (debugInfo !== undefined) {
-      variables.current.push(debugInfo);
-    }
+    variables.current.push(...debugInfo);
   });
 
   return (
     <Split gutterSize={1} minSize={25} direction="vertical" className="debug-view-container">
       <DebugSection
-        domElementID="variables"
+        domElementID="dvsc-variables"
         sectionName="VARIABLES"
         functionality={
           <VariablesContent
@@ -31,14 +28,14 @@ const DebugView: React.FC<DebugViewProps> = ({ debugInfo }) => {
         defaultTextColor={theme.textColor}
       />
       <DebugSection
-        domElementID="watch-list"
-        sectionName="WATCH LIST"
+        domElementID="dvsc-timeline"
+        sectionName="TIMELINE"
         functionality={<Feature />}
         defaultTextColor={theme.textColor}
       />
       <DebugSection
-        domElementID="timeline"
-        sectionName="TIMELINE"
+        domElementID="dvsc-errors"
+        sectionName="ERRORS"
         functionality={<Feature />}
         defaultTextColor={theme.textColor}
       />
