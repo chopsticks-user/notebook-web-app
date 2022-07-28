@@ -9,8 +9,15 @@ function Header() {
 
         </div>
       </div>
-      <div className="header-homepage-shortcut">
-
+      <div className="header-homepage-shortcut-container">
+        <div className="header-homepage-icon">
+          <a className="header-homepage-link" href="#"></a>
+        </div>
+        <div className="header-homepage-brand">
+          <a className="header-homepage-link" href="#">
+            NEKO
+          </a>
+        </div>
       </div>
       <div className="header-section-container" id="hsc-right">
 

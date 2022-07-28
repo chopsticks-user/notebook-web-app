@@ -30,7 +30,7 @@ function App() {
     <ThemeContext.Provider value={darkTheme ? themes.dark : themes.light}>
       <div className="page-container" onDoubleClick={toggleTheme}>
         <Header />
-        <Split className="main-container" gutterSize={1} minSize={100} direction="horizontal"
+        <Split className="main-container" gutterSize={1} minSize={0} direction="horizontal"
           style={{ backgroundColor: darkTheme ? "#1a1c1e" : "#fff" }}
         >
           <FileManager />
