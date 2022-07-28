@@ -6,6 +6,10 @@
   --main-components-padding: 5px;
 }
 
+*:focus {
+  outline: none;
+}
+
 body {
   margin: 0;
   background-color: #2e2e2e;

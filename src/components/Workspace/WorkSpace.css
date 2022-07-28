@@ -1,14 +1,39 @@
 .workspace-container {
   height: 100%;
   display: flex;
-  /* flex: 4 0 auto; */
   flex-direction: row;
   overflow: auto;
-  /* min-width: 800px; */
 }
 
-.workspace {
+.script-block-container {
   height: 100%;
   flex: 1;
   padding: 5px;
+}
+
+.script-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px;
+}
+
+.script-block--index {
+  height: 100%;
+  flex: 0 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.script-container {
+  height: 100%;
+  flex: auto;
+  display: flex;
+  flex-direction: row;
+  padding: 0 5px;
+}
+
+.script-block-container>input:focus {
+  outline: none;
 }
