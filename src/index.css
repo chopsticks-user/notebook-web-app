@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  --header-height-to-body: 5%;
+  --header-height: 40px;
   --main-components-padding: 5px;
 }
 
@@ -31,7 +31,7 @@ code {
 }
 
 .main-container {
-  height: calc(100% - var(--header-height-to-body));
+  height: calc(100% - var(--header-height));
   width: 100%;
   display: flex;
 }

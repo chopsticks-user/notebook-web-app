@@ -41,6 +41,9 @@
     align-items: center;
     width: var(--section-header-height);
     height: var(--section-header-height);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .dropdown-icon-arrow:hover {
