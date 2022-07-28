@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext } from "react"
+import React, { ReactElement, useContext, useEffect, useRef, useState } from "react"
 import { ThemeContext } from "../../App"
 import Split from "react-split"
 import "./DebugView.css"
@@ -9,13 +9,25 @@ type DebugViewProps = {
 
 const DebugView: React.FC<DebugViewProps> = ({ debugInfo }) => {
   const theme = useContext(ThemeContext);
+  const variables = useRef<any[]>([]);
+
+  useEffect(() => {
+    if (debugInfo !== undefined) {
+      variables.current.push(debugInfo);
+    }
+  });
 
   return (
     <Split gutterSize={1} minSize={25} direction="vertical" className="debug-view-container">
       <DebugSection
         domElementID="variables"
         sectionName="VARIABLES"
-        functionality={<Feature />}
+        functionality={
+          <VariablesContent
+            trackingVariables={variables.current}
+            defaultTextColor={theme.textColor}
+          />
+        }
         defaultTextColor={theme.textColor}
       />
       <DebugSection
@@ -41,7 +53,12 @@ type DebugSectionProps = {
   defaultTextColor: string;
 }
 
-const DebugSection: React.FC<DebugSectionProps> = ({ domElementID, sectionName, functionality, defaultTextColor }) => {
+const DebugSection: React.FC<DebugSectionProps> = ({
+  domElementID,
+  sectionName,
+  functionality,
+  defaultTextColor
+}) => {
   const dropDownIcon: string = ">";
   return (
     <div className="debug-view-section-container"
@@ -66,6 +83,26 @@ const DebugSection: React.FC<DebugSectionProps> = ({ domElementID, sectionName, 
 
 const Feature = () => {
   return <span></span>;
+}
+
+type VariablesContentProps = {
+  trackingVariables: any[];
+  defaultTextColor: string;
+}
+
+const VariablesContent: React.FC<VariablesContentProps> = ({ trackingVariables, defaultTextColor }) => {
+  const variableList = trackingVariables?.map((variable, index) => {
+    return (
+      <li key={index} style={{ color: defaultTextColor }}>
+        {variable}
+      </li>
+    );
+  });
+  return (
+    <div>
+      {variableList}
+    </div>
+  );
 }
 
 export default DebugView;

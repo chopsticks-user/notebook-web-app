@@ -33,6 +33,7 @@
     padding-left: var(--section-header-height);
     display: flex;
     flex-direction: column;
+    overflow: auto;
 }
 
 .dropdown-icon-arrow {
