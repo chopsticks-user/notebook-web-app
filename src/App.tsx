@@ -6,40 +6,66 @@ import Header from "./components/Header";
 import LoadingPage from "./components/LoadingPage";
 import WorkSpace from "./components/Workspace/WorkSpace";
 
-const themes = {
+const commonTheme = {
+  debugView: {
+
+  },
+  workspace: {
+    scriptFontSize: "15px",
+    indexScriptSpacing: "1rem",
+    focusedLineBorder: "1px solid #505558",
+    focusedlineIndexColor: "red"
+  }
+}
+
+const colorThemes = {
   dark: {
     backgroundColor: "#1a1c1e",
-    textColor: "#fff"
+    textColor: "#fff",
   },
   light: {
     backgroundColor: "#fff",
-    textColor: "#000000"
+    textColor: "#000000",
   }
 };
 
 function App() {
+  const defaultCommonTheme = commonTheme;
+  const defaultColorTheme = colorThemes.dark;
+  let currentCommonTheme = defaultCommonTheme;
+  let currentColorTheme = defaultColorTheme;
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
+
   const [debugInfo, setDebugInfo] = useState<any[]>([]);
-  let currentTheme = darkTheme ? themes.dark : themes.light;
 
   const toggleTheme = () => {
-    setDarkTheme(prevDarkTheme => !prevDarkTheme);
+    setDarkTheme(!darkTheme);
+    currentColorTheme = darkTheme ? colorThemes.dark : colorThemes.light;
   }
 
-  useEffect(() => {
-    currentTheme = darkTheme ? themes.dark : themes.light;
-  }, [darkTheme]);
+  const resetTheme = () => {
+    currentCommonTheme = defaultCommonTheme;
+  }
 
   return (
     <>
       <div className="page-container" onDoubleClick={toggleTheme}>
         <Header />
-        <Split className="main-container" gutterSize={1} minSize={0} direction="horizontal"
-          style={{ backgroundColor: currentTheme.backgroundColor }}
+        <Split
+          className="main-container" gutterSize={1} minSize={0} direction="horizontal"
+          style={{ backgroundColor: currentColorTheme.backgroundColor }}
         >
           <FileManager />
-          <WorkSpace setDebugInfo={setDebugInfo} theme={currentTheme} />
-          <DebugView debugInfo={debugInfo} theme={currentTheme} />
+          <WorkSpace
+            setDebugInfo={setDebugInfo}
+            commonTheme={currentCommonTheme.workspace}
+            colorTheme={currentColorTheme}
+          />
+          <DebugView
+            debugInfo={debugInfo}
+            commonTheme={currentCommonTheme.debugView}
+            colorTheme={currentColorTheme}
+          />
         </Split>
       </div>
       <LoadingPage />

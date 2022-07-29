@@ -4,10 +4,11 @@ import "./DebugView.css"
 
 type DebugViewProps = {
   debugInfo: any[];
-  theme: any;
+  commonTheme: any;
+  colorTheme: any;
 }
 
-const DebugView: React.FC<DebugViewProps> = ({ debugInfo, theme }) => {
+const DebugView: React.FC<DebugViewProps> = ({ debugInfo, commonTheme, colorTheme }) => {
   const variables = useRef<any[]>([]);
 
   useEffect(() => {
@@ -22,22 +23,22 @@ const DebugView: React.FC<DebugViewProps> = ({ debugInfo, theme }) => {
         functionality={
           <VariablesContent
             trackingVariables={variables.current}
-            defaultTextColor={theme.textColor}
+            colorTheme={colorTheme}
           />
         }
-        defaultTextColor={theme.textColor}
+        colorTheme={colorTheme}
       />
       <DebugSection
         domElementID="dvsc-timeline"
         sectionName="TIMELINE"
         functionality={<Feature />}
-        defaultTextColor={theme.textColor}
+        colorTheme={colorTheme}
       />
       <DebugSection
         domElementID="dvsc-errors"
         sectionName="ERRORS"
         functionality={<Feature />}
-        defaultTextColor={theme.textColor}
+        colorTheme={colorTheme}
       />
     </Split>
   );
@@ -47,25 +48,25 @@ type DebugSectionProps = {
   domElementID: string;
   sectionName: string;
   functionality: ReactElement<any>;
-  defaultTextColor: string;
+  colorTheme: any;
 }
 
 const DebugSection: React.FC<DebugSectionProps> = ({
   domElementID,
   sectionName,
   functionality,
-  defaultTextColor
+  colorTheme
 }) => {
   const dropDownIcon: string = ">";
   return (
     <div className="debug-view-section-container"
       id={domElementID}
-      style={{ color: defaultTextColor }}
+      style={{ color: colorTheme.textColor }}
     >
       <header className="debug-view-section-header">
         <button
           className="dropdown-icon-arrow"
-          style={{ color: defaultTextColor }}
+          style={{ color: colorTheme.textColor }}
         >
           {dropDownIcon}
         </button>
@@ -84,13 +85,13 @@ const Feature = () => {
 
 type VariablesContentProps = {
   trackingVariables: any[];
-  defaultTextColor: string;
+  colorTheme: any;
 }
 
-const VariablesContent: React.FC<VariablesContentProps> = ({ trackingVariables, defaultTextColor }) => {
+const VariablesContent: React.FC<VariablesContentProps> = ({ trackingVariables, colorTheme }) => {
   const variableList = trackingVariables?.map((variable, index) => {
     return (
-      <li key={index} style={{ color: defaultTextColor }}>
+      <li key={index} style={{ color: colorTheme.textColor }}>
         {variable}
       </li>
     );

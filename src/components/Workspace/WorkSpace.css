@@ -1,39 +1,23 @@
 .workspace-container {
+  --workspace-header-height: 25px;
   height: 100%;
   display: flex;
   flex-direction: row;
-  overflow: auto;
 }
 
 .script-block-container {
-  height: 100%;
+  --fix-space: 4px;
+  height: calc(100% - var(--fix-space));
   flex: 1;
-  padding: 5px;
-}
-
-.script-block {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  padding: 2px;
+  padding-top: var(--workspace-header-height);
 }
 
-.script-block--index {
+.script-contents {
+  width: 100%;
   height: 100%;
-  flex: 0 0 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.script-container {
-  height: 100%;
-  flex: auto;
-  display: flex;
-  flex-direction: row;
-  padding: 0 5px;
-}
-
-.script-block-container>input:focus {
-  outline: none;
+  resize: none;
+  border: none;
+  white-space: pre-wrap;
 }

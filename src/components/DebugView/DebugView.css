@@ -1,9 +1,7 @@
 .debug-view-container {
-    --resize-bar-heigth: 3px;
     --section-header-height: 25px;
     box-sizing: border-box;
     height: 100%;
-    /* flex: auto; */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -22,7 +20,6 @@
     min-height: var(--section-header-height);
     display: flex;
     flex-direction: row;
-    /* padding: 0 var(--main-components-padding); */
     align-items: center;
 }
 

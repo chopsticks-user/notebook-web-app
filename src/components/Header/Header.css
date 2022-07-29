@@ -1,7 +1,5 @@
 .header-container {
-    height: var(--header-height);
     min-height: 40px;
-    /* margin-bottom: var(--body-padding); */
     display: flex;
 }
 
