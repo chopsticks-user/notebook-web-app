@@ -10,6 +10,7 @@
   --main-components-header-height: 25px;
   --main-components-header-bg-color: #252525;
   --border-color: #505558;
+  --custom-color: #1e1e24;
 }
 
 *:focus {
@@ -24,8 +25,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
 }
+
+/* body::-webkit-scrollbar:vertical {
+  background-color: #1e1e24;
+  width: 0.5px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+  height: 0;
+  width: 0;
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

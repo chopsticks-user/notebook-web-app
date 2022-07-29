@@ -36,17 +36,37 @@ type ScriptBlockProps = {
 const ScriptBlock: React.FC<ScriptBlockProps> = ({
   lineCount, setLineCount, commonTheme, colorTheme
 }) => {
-  const [divH, setDivH] = useState<number>();
+  type Sizes = {
+    width: number,
+    height: number
+  }
+  const [scriptBlockSizes, setScriptBlockSize] = useState<Sizes>();
   const [scripts, setScripts] = useState<string>("");
 
   const handleScriptChange = (e: any) => {
-    console.log(e.target.scrollHeight);
     setScripts(e.target.value);
+
+    if (!scriptBlockSizes) {
+      setScriptBlockSize({
+        width: e.target.scrollWidth,
+        height: e.target.scrollHeight
+      });
+    } else {
+      setScriptBlockSize({
+        width: Math.max(e.target.scrollWidth, scriptBlockSizes.width),
+        height: Math.max(e.target.scrollHeight, scriptBlockSizes.height)
+      });
+    }
+    console.log(scriptBlockSizes);
+    console.log(e.target.scrollWidth, e.target.scrollHeight);
   }
 
   return (
     <div className="script-block-container">
-      <div className="script-index-bar" style={{color:colorTheme.textColor}}></div>
+      <div className="script-index-bar"
+        style={{ height: `${scriptBlockSizes?.height}px`, color: colorTheme.textColor }}>
+        0
+      </div>
       <textarea
         className="script-contents"
         value={scripts}
@@ -54,6 +74,8 @@ const ScriptBlock: React.FC<ScriptBlockProps> = ({
         autoFocus={true}
         placeholder={"Enter your commands"}
         style={{
+          height: `${scriptBlockSizes?.height}px`,
+          width: `${scriptBlockSizes?.width}px`,
           backgroundColor: colorTheme.backgroundColor,
           color: colorTheme.textColor,
           fontSize: commonTheme.scriptFontSize,
