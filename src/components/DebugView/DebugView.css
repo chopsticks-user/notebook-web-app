@@ -1,5 +1,4 @@
 .debug-view-container {
-    --section-header-height: 25px;
     box-sizing: border-box;
     height: 100%;
     overflow: hidden;
@@ -16,18 +15,19 @@
 
 .debug-view-section-header {
     width: 100%;
-    max-height: var(--section-header-height);
-    min-height: var(--section-header-height);
+    max-height: var(--main-components-header-height);
+    min-height: var(--main-components-header-height);
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: var(--main-components-header-bg-color);
 }
 
 .debug-view-section-content {
     width: 100%;
     flex: auto;
     padding: var(--main-components-padding);
-    padding-left: var(--section-header-height);
+    padding-left: var(--main-components-header-height);
     display: flex;
     flex-direction: column;
     overflow: auto;
@@ -37,8 +37,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: var(--section-header-height);
-    height: var(--section-header-height);
+    width: var(--main-components-header-height);
+    height: var(--main-components-header-height);
+    min-width: var(--main-components-header-height);
     background-color: transparent;
     border: none;
     cursor: pointer;

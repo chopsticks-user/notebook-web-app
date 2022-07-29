@@ -3,4 +3,10 @@
     overflow-x: hidden;
     overflow-y: auto;
     min-width: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.file-manager-header {
+    
 }

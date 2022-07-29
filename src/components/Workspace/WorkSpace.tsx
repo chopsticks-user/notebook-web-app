@@ -13,6 +13,9 @@ const WorkSpace: React.FC<WorkSpaceProps> = ({ setDebugInfo, colorTheme, commonT
 
   return (
     <div className="workspace-container" onClick={(e) => { setDebugInfo([e.clientX]); }}>
+      <div className="workspace-header-container">
+
+      </div>
       <ScriptBlock
         lineCount={lineCount}
         setLineCount={setLineCount}
@@ -43,7 +46,7 @@ const ScriptBlock: React.FC<ScriptBlockProps> = ({
 
   return (
     <div className="script-block-container">
-      <div style={{width: `50px`, color:colorTheme.textColor}}></div>
+      <div className="script-index-bar" style={{color:colorTheme.textColor}}></div>
       <textarea
         className="script-contents"
         value={scripts}
