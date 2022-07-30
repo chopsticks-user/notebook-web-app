@@ -3,19 +3,20 @@ import Split from "react-split"
 import "./DebugView.css"
 
 type DebugViewProps = {
-  debugInfo: any[];
+  rawScripts: string | null;
   commonTheme: any;
   colorTheme: any;
 }
 
-const DebugView: React.FC<DebugViewProps> = ({ debugInfo, commonTheme, colorTheme }) => {
-  const variables = useRef<any[]>([]);
+const DebugView: React.FC<DebugViewProps> = ({
+  rawScripts, commonTheme, colorTheme
+}) => {
   const sectionMinHeight = 25;
   const nSections = 3;
   const [collapsed, setCollapsed] = useState<number>(nSections);
 
   useEffect(() => {
-    variables.current.push(...debugInfo);
+    // variables.push(...rawScripts);
   });
 
   return (
@@ -33,7 +34,7 @@ const DebugView: React.FC<DebugViewProps> = ({ debugInfo, commonTheme, colorThem
         setCollapsed={setCollapsed}
         functionality={
           <VariablesContent
-            trackingVariables={variables.current}
+            rawScripts={rawScripts}
             colorTheme={colorTheme}
           />
         }
@@ -112,18 +113,36 @@ const Feature = () => {
 }
 
 type VariablesContentProps = {
-  trackingVariables: any[];
+  rawScripts: string | null;
   colorTheme: any;
 }
 
-const VariablesContent: React.FC<VariablesContentProps> = ({ trackingVariables, colorTheme }) => {
-  const variableList = trackingVariables?.map((variable, index) => {
-    return (
-      <li key={index} style={{ color: colorTheme.textColor }}>
-        {variable}
-      </li>
-    );
-  });
+const VariablesContent: React.FC<VariablesContentProps> = ({
+  rawScripts, colorTheme
+}) => {
+  const preprocessedScripts = JSON.stringify(rawScripts);
+
+  const processRawScripts = () => {
+    const len = preprocessedScripts.length;
+    return preprocessedScripts
+      .slice(1, len - 1)
+      .replaceAll("\\n", "")
+      .split(";");
+  }
+
+  const variableList = processRawScripts()
+    .map((value, index) => {
+      return (
+        <li
+          key={index + 1}
+          style={{
+            color: colorTheme.textColor,
+            listStyle: "none"
+          }}>
+          {`> [${index + 1}]: ${value}`}
+        </li>
+      );
+    });
   return (
     <div>
       {variableList}

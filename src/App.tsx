@@ -14,6 +14,7 @@ const commonTheme = {
 
   },
   workspace: {
+    scriptFont: "",
     scriptFontSize: "15px",
     indexScriptSpacing: "1rem",
     focusedLineBorder: "1px solid #505558",
@@ -41,7 +42,7 @@ const App = () => {
   let currentColorTheme = defaultColorTheme;
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
 
-  const [debugInfo, setDebugInfo] = useState<any[]>([]);
+  const [rawScripts, setRawScripts] = useState<string|null>("");
 
   const toggleTheme = () => {
     setDarkTheme(!darkTheme);
@@ -60,20 +61,20 @@ const App = () => {
           colorTheme={currentColorTheme}
         />
         <Split
-          className="main-container" gutterSize={1} minSize={0} direction="horizontal"
+          className="main-container" gutterSize={1} minSize={0} sizes={[20, 45, 35]} direction="horizontal"
           style={{ backgroundColor: currentColorTheme.backgroundColor }}
         >
-          <FileManager />
-          <WorkSpace
-            setDebugInfo={setDebugInfo}
-            commonTheme={currentCommonTheme.workspace}
-            colorTheme={currentColorTheme}
-          />
           <DebugView
-            debugInfo={debugInfo}
+            rawScripts={rawScripts}
             commonTheme={currentCommonTheme.debugView}
             colorTheme={currentColorTheme}
           />
+          <WorkSpace
+            setRawScripts={setRawScripts}
+            commonTheme={currentCommonTheme.workspace}
+            colorTheme={currentColorTheme}
+          />
+          <FileManager />
         </Split>
       </div>
       <LoadingPage />

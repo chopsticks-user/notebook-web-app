@@ -2,22 +2,23 @@ import React, { useContext, useEffect, useState, useRef } from "react"
 import "./WorkSpace.css"
 
 type WorkSpaceProps = {
-  setDebugInfo: React.Dispatch<React.SetStateAction<any[]>>;
+  setRawScripts: React.Dispatch<React.SetStateAction<string|null>>;
   commonTheme: any;
   colorTheme: any;
 }
 
-const WorkSpace: React.FC<WorkSpaceProps> = ({ setDebugInfo, colorTheme, commonTheme }) => {
+const WorkSpace: React.FC<WorkSpaceProps> = ({ setRawScripts, colorTheme, commonTheme }) => {
   const [lineCount, setLineCount] = useState<number>(1);
 
   return (
-    <div className="workspace-container" onClick={(e) => { setDebugInfo([e.clientX]); }}>
+    <div className="workspace-container">
       <div className="workspace-header-container">
 
       </div>
       <ScriptBlock
         lineCount={lineCount}
         setLineCount={setLineCount}
+        setRawScripts={setRawScripts}
         commonTheme={commonTheme}
         colorTheme={colorTheme}
       />
@@ -28,12 +29,13 @@ const WorkSpace: React.FC<WorkSpaceProps> = ({ setDebugInfo, colorTheme, commonT
 type ScriptBlockProps = {
   lineCount: number;
   setLineCount: any;
+  setRawScripts: any;
   commonTheme: any;
   colorTheme: any;
 }
 
 const ScriptBlock: React.FC<ScriptBlockProps> = ({
-  lineCount, setLineCount, commonTheme, colorTheme
+  lineCount, setLineCount, setRawScripts, commonTheme, colorTheme
 }) => {
   type Sizes = {
     width: number,
@@ -43,8 +45,8 @@ const ScriptBlock: React.FC<ScriptBlockProps> = ({
   const [scripts, setScripts] = useState<string>("");
 
   const handleScriptChange = (e: any) => {
-    // e.target.value = JSON.parse(JSON.stringify(e.target.value).replaceAll(new RegExp("\\\\n", "g"), "\\n   1"));
     setScripts(e.target.value);
+    setRawScripts(e.target.value);
 
     if (!scriptBlockSizes) {
       setScriptBlockSize({
@@ -80,6 +82,7 @@ const ScriptBlock: React.FC<ScriptBlockProps> = ({
           backgroundColor: colorTheme.backgroundColor,
           color: colorTheme.textColor,
           fontSize: commonTheme.scriptFontSize,
+          fontFamily: commonTheme.scriptFont
         }}
         onChange={handleScriptChange}
         onScroll={handleScroll}
