@@ -35,7 +35,6 @@
   resize: none;
   border: none;
   white-space: pre;
-  position: sticky;
   padding-top: var(--header-script-gap);
   overflow-y: scroll;
   overflow-x: scroll;

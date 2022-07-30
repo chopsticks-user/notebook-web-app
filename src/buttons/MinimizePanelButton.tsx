@@ -1,10 +1,14 @@
 import React from 'react'
 
 type MinimizePanelButtonProps = {
+    index: number;
     color: string;
+    setMinimized: any;
 }
 
-const MinimizePanelButton: React.FC<MinimizePanelButtonProps> = ({ color }) => {
+const MinimizePanelButton: React.FC<MinimizePanelButtonProps> = ({
+    index, color, setMinimized
+}) => {
     const minimizePanelButton: string = ">";
     return (
         <button
