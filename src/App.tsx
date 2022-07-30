@@ -42,7 +42,7 @@ const App = () => {
   let currentColorTheme = defaultColorTheme;
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
 
-  const [rawScripts, setRawScripts] = useState<string|null>("");
+  const [rawScripts, setRawScripts] = useState<string>("");
 
   const toggleTheme = () => {
     setDarkTheme(!darkTheme);

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react"
 import "./WorkSpace.css"
 
 type WorkSpaceProps = {
-  setRawScripts: React.Dispatch<React.SetStateAction<string|null>>;
+  setRawScripts: React.Dispatch<React.SetStateAction<string>>;
   commonTheme: any;
   colorTheme: any;
 }

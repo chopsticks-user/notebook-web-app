@@ -1,9 +1,18 @@
-import React, { ReactElement, useContext, useEffect, useRef, useState } from "react"
+import React, { ReactElement, useEffect, useRef, useState } from "react"
 import Split from "react-split"
 import "./DebugView.css"
 
+const processRawScripts = (rawScripts: string) => {
+  const preprocessedScripts = JSON.stringify(rawScripts);
+  const len = preprocessedScripts.length;
+  return preprocessedScripts
+    .slice(1, len - 1)
+    .replaceAll("\\n", "")
+    .split(";");
+}
+
 type DebugViewProps = {
-  rawScripts: string | null;
+  rawScripts: string;
   commonTheme: any;
   colorTheme: any;
 }
@@ -11,13 +20,12 @@ type DebugViewProps = {
 const DebugView: React.FC<DebugViewProps> = ({
   rawScripts, commonTheme, colorTheme
 }) => {
-  const sectionMinHeight = 25;
-  const nSections = 3;
+  const sectionMinHeight: number = 25;
+  const nSections: number = 3;
   const [collapsed, setCollapsed] = useState<number>(nSections);
+  let processedScripts = useRef<string[]>([]);
 
-  useEffect(() => {
-    // variables.push(...rawScripts);
-  });
+  processedScripts.current = processRawScripts(rawScripts);
 
   return (
     <Split
@@ -29,24 +37,25 @@ const DebugView: React.FC<DebugViewProps> = ({
       <DebugSection
         index={0}
         minHeight={sectionMinHeight}
-        domElementID="dvsc-variables"
-        sectionName="VARIABLES"
+        domElementID="dvsc-suggestions"
+        sectionName="SUGGESTIONS"
         setCollapsed={setCollapsed}
-        functionality={
-          <VariablesContent
-            rawScripts={rawScripts}
-            colorTheme={colorTheme}
-          />
-        }
+        functionality={<Feature />}
         colorTheme={colorTheme}
       />
+
       <DebugSection
         index={1}
         minHeight={sectionMinHeight}
-        domElementID="dvsc-timeline"
-        sectionName="TIMELINE"
+        domElementID="dvsc-info"
+        sectionName="INFO"
         setCollapsed={setCollapsed}
-        functionality={<Feature />}
+        functionality={
+          <Info
+            processedScripts={processedScripts.current}
+            colorTheme={colorTheme}
+          />
+        }
         colorTheme={colorTheme}
       />
       <DebugSection
@@ -112,25 +121,20 @@ const Feature = () => {
   return <span></span>;
 }
 
-type VariablesContentProps = {
-  rawScripts: string | null;
+type InfoProps = {
+  processedScripts: string[];
   colorTheme: any;
 }
 
-const VariablesContent: React.FC<VariablesContentProps> = ({
-  rawScripts, colorTheme
+const Info: React.FC<InfoProps> = ({
+  processedScripts, colorTheme
 }) => {
-  const preprocessedScripts = JSON.stringify(rawScripts);
 
-  const processRawScripts = () => {
-    const len = preprocessedScripts.length;
-    return preprocessedScripts
-      .slice(1, len - 1)
-      .replaceAll("\\n", "")
-      .split(";");
-  }
+  useEffect(() => {
+    console.log(processedScripts);
+  });
 
-  const variableList = processRawScripts()
+  const variableList = processedScripts
     .map((value, index) => {
       return (
         <li
@@ -143,6 +147,7 @@ const VariablesContent: React.FC<VariablesContentProps> = ({
         </li>
       );
     });
+
   return (
     <div>
       {variableList}
