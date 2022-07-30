@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import LoadingPage from "./components/LoadingPage";
 import WorkSpace from "./components/Workspace/WorkSpace";
 
-const commonTheme = {
+const sectionThemes = {
   header: {
 
   },
@@ -22,7 +22,7 @@ const commonTheme = {
   }
 }
 
-const colorThemes = {
+const generalThemes = {
   dark: {
     backgroundColor: "#1a1c1e",
     textColor: "#fff",
@@ -36,43 +36,43 @@ const colorThemes = {
 };
 
 const App = () => {
-  const defaultCommonTheme = commonTheme;
-  const defaultColorTheme = colorThemes.dark;
-  let currentCommonTheme = defaultCommonTheme;
-  let currentColorTheme = defaultColorTheme;
+  const defaultsectionThemes = sectionThemes;
+  const defaultgeneralTheme = generalThemes.dark;
+  let currentsectionThemes = defaultsectionThemes;
+  let currentgeneralTheme = defaultgeneralTheme;
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
 
   const [rawScripts, setRawScripts] = useState<string>("");
 
   const toggleTheme = () => {
     setDarkTheme(!darkTheme);
-    currentColorTheme = darkTheme ? colorThemes.dark : colorThemes.light;
+    currentgeneralTheme = darkTheme ? generalThemes.dark : generalThemes.light;
   }
 
   const resetTheme = () => {
-    currentCommonTheme = defaultCommonTheme;
+    currentsectionThemes = defaultsectionThemes;
   }
 
   return (
     <>
       <div className="page-container" onDoubleClick={toggleTheme}>
         <Header
-          commonTheme={currentCommonTheme.header}
-          colorTheme={currentColorTheme}
+          sectionThemes={currentsectionThemes.header}
+          generalTheme={currentgeneralTheme}
         />
         <Split
           className="main-container" gutterSize={1} minSize={0} sizes={[20, 45, 35]} direction="horizontal"
-          style={{ backgroundColor: currentColorTheme.backgroundColor }}
+          style={{ backgroundColor: currentgeneralTheme.backgroundColor }}
         >
           <DebugView
             rawScripts={rawScripts}
-            commonTheme={currentCommonTheme.debugView}
-            colorTheme={currentColorTheme}
+            sectionThemes={currentsectionThemes.debugView}
+            generalTheme={currentgeneralTheme}
           />
           <WorkSpace
             setRawScripts={setRawScripts}
-            commonTheme={currentCommonTheme.workspace}
-            colorTheme={currentColorTheme}
+            sectionThemes={currentsectionThemes.workspace}
+            generalTheme={currentgeneralTheme}
           />
           <FileManager />
         </Split>

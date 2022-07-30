@@ -3,11 +3,11 @@ import "./WorkSpace.css"
 
 type WorkSpaceProps = {
   setRawScripts: React.Dispatch<React.SetStateAction<string>>;
-  commonTheme: any;
-  colorTheme: any;
+  sectionThemes: any;
+  generalTheme: any;
 }
 
-const WorkSpace: React.FC<WorkSpaceProps> = ({ setRawScripts, colorTheme, commonTheme }) => {
+const WorkSpace: React.FC<WorkSpaceProps> = ({ setRawScripts, generalTheme, sectionThemes }) => {
   const [lineCount, setLineCount] = useState<number>(1);
 
   return (
@@ -19,8 +19,8 @@ const WorkSpace: React.FC<WorkSpaceProps> = ({ setRawScripts, colorTheme, common
         lineCount={lineCount}
         setLineCount={setLineCount}
         setRawScripts={setRawScripts}
-        commonTheme={commonTheme}
-        colorTheme={colorTheme}
+        sectionThemes={sectionThemes}
+        generalTheme={generalTheme}
       />
     </div>
   );
@@ -30,12 +30,12 @@ type ScriptBlockProps = {
   lineCount: number;
   setLineCount: any;
   setRawScripts: any;
-  commonTheme: any;
-  colorTheme: any;
+  sectionThemes: any;
+  generalTheme: any;
 }
 
 const ScriptBlock: React.FC<ScriptBlockProps> = ({
-  lineCount, setLineCount, setRawScripts, commonTheme, colorTheme
+  lineCount, setLineCount, setRawScripts, sectionThemes, generalTheme
 }) => {
   type Sizes = {
     width: number,
@@ -69,7 +69,7 @@ const ScriptBlock: React.FC<ScriptBlockProps> = ({
       <div className="script-index-bar"
         style={{
           height: `${scriptBlockSizes?.height}px`,
-          color: colorTheme.textColor
+          color: generalTheme.textColor
         }}>
       </div>
       <textarea
@@ -79,10 +79,10 @@ const ScriptBlock: React.FC<ScriptBlockProps> = ({
         autoFocus={true}
         placeholder={"Enter your commands"}
         style={{
-          backgroundColor: colorTheme.backgroundColor,
-          color: colorTheme.textColor,
-          fontSize: commonTheme.scriptFontSize,
-          fontFamily: commonTheme.scriptFont
+          backgroundColor: generalTheme.backgroundColor,
+          color: generalTheme.textColor,
+          fontSize: sectionThemes.scriptFontSize,
+          fontFamily: sectionThemes.scriptFont
         }}
         onChange={handleScriptChange}
         onScroll={handleScroll}

@@ -1,24 +1,16 @@
 import React, { ReactElement, useEffect, useRef, useState } from "react"
 import Split from "react-split"
 import "./DebugView.css"
-
-const processRawScripts = (rawScripts: string) => {
-  const preprocessedScripts = JSON.stringify(rawScripts);
-  const len = preprocessedScripts.length;
-  return preprocessedScripts
-    .slice(1, len - 1)
-    .replaceAll("\\n", "")
-    .split(";");
-}
+import { processRawScripts } from "../../helpers/ScriptProcessing"
 
 type DebugViewProps = {
   rawScripts: string;
-  commonTheme: any;
-  colorTheme: any;
+  sectionThemes: any;
+  generalTheme: any;
 }
 
 const DebugView: React.FC<DebugViewProps> = ({
-  rawScripts, commonTheme, colorTheme
+  rawScripts, sectionThemes, generalTheme
 }) => {
   const sectionMinHeight: number = 25;
   const nSections: number = 3;
@@ -41,7 +33,7 @@ const DebugView: React.FC<DebugViewProps> = ({
         sectionName="SUGGESTIONS"
         setCollapsed={setCollapsed}
         functionality={<Feature />}
-        colorTheme={colorTheme}
+        generalTheme={generalTheme}
       />
 
       <DebugSection
@@ -53,10 +45,10 @@ const DebugView: React.FC<DebugViewProps> = ({
         functionality={
           <Info
             processedScripts={processedScripts.current}
-            colorTheme={colorTheme}
+            generalTheme={generalTheme}
           />
         }
-        colorTheme={colorTheme}
+        generalTheme={generalTheme}
       />
       <DebugSection
         index={2}
@@ -65,7 +57,7 @@ const DebugView: React.FC<DebugViewProps> = ({
         sectionName="ERRORS"
         setCollapsed={setCollapsed}
         functionality={<Feature />}
-        colorTheme={colorTheme}
+        generalTheme={generalTheme}
       />
     </Split>
   );
@@ -78,7 +70,7 @@ type DebugSectionProps = {
   sectionName: string;
   setCollapsed: React.Dispatch<React.SetStateAction<number>>;
   functionality: ReactElement<any>;
-  colorTheme: any;
+  generalTheme: any;
 }
 
 const DebugSection: React.FC<DebugSectionProps> = ({
@@ -88,7 +80,7 @@ const DebugSection: React.FC<DebugSectionProps> = ({
   sectionName,
   setCollapsed,
   functionality,
-  colorTheme
+  generalTheme
 }) => {
   const minimizePanelButton: string = ">";
 
@@ -96,13 +88,13 @@ const DebugSection: React.FC<DebugSectionProps> = ({
     <div className="debug-view-section-container"
       id={domElementID}
       style={{
-        color: colorTheme.textColor,
+        color: generalTheme.textColor,
       }}>
       <header className="debug-view-section-header">
 
         <button
           className="minimize-panel-button"
-          style={{ color: colorTheme.textColor }}
+          style={{ color: generalTheme.textColor }}
           onClick={() => setCollapsed(index)}
         >
           {minimizePanelButton}
@@ -123,16 +115,12 @@ const Feature = () => {
 
 type InfoProps = {
   processedScripts: string[];
-  colorTheme: any;
+  generalTheme: any;
 }
 
 const Info: React.FC<InfoProps> = ({
-  processedScripts, colorTheme
+  processedScripts, generalTheme
 }) => {
-
-  useEffect(() => {
-    console.log(processedScripts);
-  });
 
   const variableList = processedScripts
     .map((value, index) => {
@@ -140,7 +128,7 @@ const Info: React.FC<InfoProps> = ({
         <li
           key={index + 1}
           style={{
-            color: colorTheme.textColor,
+            color: generalTheme.textColor,
             listStyle: "none"
           }}>
           {`> [${index + 1}]: ${value}`}
