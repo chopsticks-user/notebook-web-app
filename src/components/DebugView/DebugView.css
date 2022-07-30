@@ -33,7 +33,7 @@
     overflow: auto;
 }
 
-.dropdown-icon-arrow {
+.minimize-panel-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,7 +45,7 @@
     cursor: pointer;
 }
 
-.dropdown-icon-arrow:hover {
+.minimize-panel-button:hover {
     transform: rotate(90deg);
 }
 

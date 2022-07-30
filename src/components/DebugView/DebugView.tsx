@@ -1,5 +1,6 @@
 import React, { ReactElement, useContext, useEffect, useRef, useState } from "react"
 import Split from "react-split"
+import MinimizePanelButton from "../../buttons/MinimizePanelButton"
 import "./DebugView.css"
 
 type DebugViewProps = {
@@ -57,19 +58,14 @@ const DebugSection: React.FC<DebugSectionProps> = ({
   functionality,
   colorTheme
 }) => {
-  const dropDownIcon: string = ">";
+
   return (
     <div className="debug-view-section-container"
       id={domElementID}
       style={{ color: colorTheme.textColor }}
     >
       <header className="debug-view-section-header">
-        <button
-          className="dropdown-icon-arrow"
-          style={{ color: colorTheme.textColor }}
-        >
-          {dropDownIcon}
-        </button>
+        <MinimizePanelButton color={colorTheme.textColor} />
         <b>{sectionName}</b>
       </header>
       <div className="debug-view-section-content">

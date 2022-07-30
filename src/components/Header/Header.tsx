@@ -16,10 +16,42 @@ const Header: React.FC<HeaderProps> = ({ commonTheme, colorTheme }) => {
           <ul className="header-dropdown-item-container"
             style={{ color: colorTheme.textColor }}
           >
-            <li><a>Item 1</a></li>
-            <li><a>Item 2</a></li>
-            <li><a>Item 3</a></li>
-            <li><a>Item 4</a></li>
+            <li className="header-dropdown-item" id="hdi-1">
+              <a href="/item1"
+                style={{
+                  color: colorTheme.textColor,
+                  textDecoration: "none"
+                }}>
+                Item 1
+              </a>
+            </li>
+            <li className="header-dropdown-item" id="hdi-2">
+              <a href="/item2"
+                style={{
+                  color: colorTheme.textColor,
+                  textDecoration: "none"
+                }}>
+                Item 2
+              </a>
+            </li>
+            <li className="header-dropdown-item" id="hdi-3">
+              <a href="/item3"
+                style={{
+                  color: colorTheme.textColor,
+                  textDecoration: "none"
+                }}>
+                Item 3
+              </a>
+            </li>
+            <li className="header-dropdown-item" id="hdi-4">
+              <a href="/item4"
+                style={{
+                  color: colorTheme.textColor,
+                  textDecoration: "none"
+                }}>
+                Item 4
+              </a>
+            </li>
           </ul>
         </div>
       </div>
