@@ -1,4 +1,3 @@
-import { AnyARecord } from "dns";
 import React, { useContext, useEffect, useState, useRef } from "react"
 import "./WorkSpace.css"
 
@@ -44,6 +43,7 @@ const ScriptBlock: React.FC<ScriptBlockProps> = ({
   const [scripts, setScripts] = useState<string>("");
 
   const handleScriptChange = (e: any) => {
+    // e.target.value = JSON.parse(JSON.stringify(e.target.value).replaceAll(new RegExp("\\\\n", "g"), "\\n   1"));
     setScripts(e.target.value);
 
     if (!scriptBlockSizes) {
@@ -57,15 +57,18 @@ const ScriptBlock: React.FC<ScriptBlockProps> = ({
         height: Math.max(e.target.scrollHeight, scriptBlockSizes.height)
       });
     }
-    console.log(scriptBlockSizes);
-    console.log(e.target.scrollWidth, e.target.scrollHeight);
+  }
+
+  const handleScroll = (e: any) => {
   }
 
   return (
     <div className="script-block-container">
       <div className="script-index-bar"
-        style={{ height: `${scriptBlockSizes?.height}px`, color: colorTheme.textColor }}>
-        0
+        style={{
+          height: `${scriptBlockSizes?.height}px`,
+          color: colorTheme.textColor
+        }}>
       </div>
       <textarea
         className="script-contents"
@@ -74,13 +77,12 @@ const ScriptBlock: React.FC<ScriptBlockProps> = ({
         autoFocus={true}
         placeholder={"Enter your commands"}
         style={{
-          height: `${scriptBlockSizes?.height}px`,
-          width: `${scriptBlockSizes?.width}px`,
           backgroundColor: colorTheme.backgroundColor,
           color: colorTheme.textColor,
           fontSize: commonTheme.scriptFontSize,
         }}
         onChange={handleScriptChange}
+        onScroll={handleScroll}
       />
     </div>
   );

@@ -7,6 +7,9 @@ import LoadingPage from "./components/LoadingPage";
 import WorkSpace from "./components/Workspace/WorkSpace";
 
 const commonTheme = {
+  header: {
+
+  },
   debugView: {
 
   },
@@ -22,14 +25,16 @@ const colorThemes = {
   dark: {
     backgroundColor: "#1a1c1e",
     textColor: "#fff",
+    hoveredTextColor: "#fff"
   },
   light: {
     backgroundColor: "#fff",
     textColor: "#000000",
+    hoveredTextColor: "#fff"
   }
 };
 
-function App() {
+const App = () => {
   const defaultCommonTheme = commonTheme;
   const defaultColorTheme = colorThemes.dark;
   let currentCommonTheme = defaultCommonTheme;
@@ -50,7 +55,10 @@ function App() {
   return (
     <>
       <div className="page-container" onDoubleClick={toggleTheme}>
-        <Header />
+        <Header
+          commonTheme={currentCommonTheme.header}
+          colorTheme={currentColorTheme}
+        />
         <Split
           className="main-container" gutterSize={1} minSize={0} direction="horizontal"
           style={{ backgroundColor: currentColorTheme.backgroundColor }}
