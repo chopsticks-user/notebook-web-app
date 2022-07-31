@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ sectionThemes, generalTheme }) => {
         <div className="header-dropdown-menu-container">
           <button className="header-dropdown-menu-button"
             style={{ color: generalTheme.textColor }}>M</button>
-          <ul className="header-dropdown-item-container"
+          <ul className="header-dropdown-item-container" id="hdic-left"
             style={{ color: generalTheme.textColor }}
           >
             <li className="header-dropdown-item" id="hdi-1">
@@ -62,16 +62,43 @@ const Header: React.FC<HeaderProps> = ({ sectionThemes, generalTheme }) => {
           {"N3K😽"}
         </a>
       </div>
-      <div
-        className="header-section-container"
-        id="hsc-right"
-        style={{ color: generalTheme.textColor }}
-      >
-        <div className="setting-container header-right-element">S
+      <div className="header-section-container" id="hsc-right">
+        <div className="setting-container header-right-element">
+          <button className="header-dropdown-menu-button" id="hrdmb-settings" style={{ color: generalTheme.textColor }}>
+            {"S"}
+          </button>
+          <ul className="header-dropdown-item-container" id="hdic-settings">
+
+          </ul>
           <div className="language-setting-container"></div>
         </div>
-        <div className="about-container header-right-element">About</div>
-        <div className="login-container header-right-element">Log In</div>
+        <span></span>
+        <div className="about-container header-right-element">
+          <button id="hrdmb-about" style={{ color: generalTheme.textColor }}>
+            <a href="/about-me"
+              style={{
+                color: generalTheme.textColor, textDecoration: "none"
+              }}>
+              {"About"}
+            </a>
+          </button>
+          <ul id="hdic-about">
+
+          </ul>
+        </div>
+        <span></span>
+        <div className="login-container header-right-element">
+          <button className="header-dropdown-menu-button" id="hrdmb-login"
+            style={{
+              color: generalTheme.textColor
+            }}>
+            {"Log In"}
+          </button>
+          <ul className="header-dropdown-item-container" id="hdic-login">
+
+          </ul>
+        </div>
+        <span></span>
       </div>
     </div>
   );
