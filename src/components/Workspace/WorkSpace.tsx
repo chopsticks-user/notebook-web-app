@@ -7,7 +7,9 @@ type WorkSpaceProps = {
   generalTheme: any;
 }
 
-const WorkSpace: React.FC<WorkSpaceProps> = ({ setRawScripts, generalTheme, sectionThemes }) => {
+const WorkSpace: React.FC<WorkSpaceProps> = ({
+  setRawScripts, generalTheme, sectionThemes
+}) => {
   const [lineCount, setLineCount] = useState<number>(1);
 
   return (

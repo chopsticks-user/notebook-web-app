@@ -3,23 +3,25 @@ import './Header.css';
 type HeaderProps = {
   sectionThemes: any;
   generalTheme: any;
+  toggleTheme: any;
 }
 
-const Header: React.FC<HeaderProps> = ({ sectionThemes, generalTheme }) => {
-
+const Header: React.FC<HeaderProps> = ({
+  sectionThemes, generalTheme, toggleTheme
+}) => {
   return (
     <div className="header-container">
       <div className="header-section-container" id="hsc-left">
         <div className="header-dropdown-menu-container">
           <button className="header-dropdown-menu-button"
-            style={{ color: generalTheme.textColor }}>M</button>
+            style={{ color: sectionThemes.textColor }}>M</button>
           <ul className="header-dropdown-item-container" id="hdic-left"
-            style={{ color: generalTheme.textColor }}
+            style={{ color: sectionThemes.textColor }}
           >
             <li className="header-dropdown-item" id="hdi-1">
               <a href="/item1"
                 style={{
-                  color: generalTheme.textColor,
+                  color: sectionThemes.textColor,
                   textDecoration: "none"
                 }}>
                 Item 1
@@ -28,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ sectionThemes, generalTheme }) => {
             <li className="header-dropdown-item" id="hdi-2">
               <a href="/item2"
                 style={{
-                  color: generalTheme.textColor,
+                  color: sectionThemes.textColor,
                   textDecoration: "none"
                 }}>
                 Item 2
@@ -37,7 +39,7 @@ const Header: React.FC<HeaderProps> = ({ sectionThemes, generalTheme }) => {
             <li className="header-dropdown-item" id="hdi-3">
               <a href="/item3"
                 style={{
-                  color: generalTheme.textColor,
+                  color: sectionThemes.textColor,
                   textDecoration: "none"
                 }}>
                 Item 3
@@ -46,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ sectionThemes, generalTheme }) => {
             <li className="header-dropdown-item" id="hdi-4">
               <a href="/item4"
                 style={{
-                  color: generalTheme.textColor,
+                  color: sectionThemes.textColor,
                   textDecoration: "none"
                 }}>
                 Item 4
@@ -57,27 +59,47 @@ const Header: React.FC<HeaderProps> = ({ sectionThemes, generalTheme }) => {
       </div>
       <div className="header-homepage-shortcut-container">
         <a className="header-homepage-link" href="/"
-          style={{ color: generalTheme.textColor }}
+          style={{ color: sectionThemes.textColor }}
         >
           {"N3K😽"}
         </a>
       </div>
       <div className="header-section-container" id="hsc-right">
         <div className="setting-container header-right-element">
-          <button className="header-dropdown-menu-button" id="hrdmb-settings" style={{ color: generalTheme.textColor }}>
-            {"S"}
+          <button className="header-dropdown-menu-button" id="hrdmb-settings"
+            style={{
+              color: sectionThemes.textColor
+            }}>
+            <span>{"⚙"}</span>
           </button>
           <ul className="header-dropdown-item-container" id="hdic-settings">
-
+            <li className="header-dropdown-item setting-item">
+              <button className="change-theme-button" onClick={() => toggleTheme()}>{"🌙"}</button>
+            </li>
+            <li className="header-dropdown-item setting-item">
+              <button className="change-language-button"
+                style={{
+                  color: sectionThemes.textColor,
+                }}>
+                {"EN"}
+              </button>
+            </li>
+            <li className="header-dropdown-item setting-item">
+              <button className="change-font-size-button"
+                style={{
+                  color: sectionThemes.textColor,
+                }}>
+                {"🖋"}
+              </button>
+            </li>
           </ul>
-          <div className="language-setting-container"></div>
         </div>
         <span></span>
         <div className="about-container header-right-element">
-          <button id="hrdmb-about" style={{ color: generalTheme.textColor }}>
+          <button id="hrdmb-about" style={{ color: sectionThemes.textColor }}>
             <a href="/about-me"
               style={{
-                color: generalTheme.textColor, textDecoration: "none"
+                color: sectionThemes.textColor, textDecoration: "none"
               }}>
               {"About"}
             </a>
@@ -90,7 +112,7 @@ const Header: React.FC<HeaderProps> = ({ sectionThemes, generalTheme }) => {
         <div className="login-container header-right-element">
           <button className="header-dropdown-menu-button" id="hrdmb-login"
             style={{
-              color: generalTheme.textColor
+              color: sectionThemes.textColor
             }}>
             {"Log In"}
           </button>
