@@ -180,3 +180,7 @@
 .setting-item>button:hover {
     background-color: gray;
 }
+
+.change-theme-button {
+    color: "white";
+}

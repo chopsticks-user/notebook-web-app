@@ -61,6 +61,7 @@ const App = () => {
         <Header
           sectionThemes={currentSectionThemes.header}
           generalTheme={generalTheme}
+          darkTheme={darkTheme}
           toggleTheme={toggleTheme}
         />
         <Split

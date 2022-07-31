@@ -1,14 +1,18 @@
+import { useRef } from 'react';
 import './Header.css';
 
 type HeaderProps = {
   sectionThemes: any;
   generalTheme: any;
+  darkTheme: boolean;
   toggleTheme: any;
 }
 
 const Header: React.FC<HeaderProps> = ({
-  sectionThemes, generalTheme, toggleTheme
+  sectionThemes, generalTheme, darkTheme, toggleTheme
 }) => {
+  const themeIcons = { dark: "🌙", light: "⛅" }
+  const themeIconRef = useRef<string>(darkTheme ? themeIcons.dark : themeIcons.light);
   return (
     <div className="header-container">
       <div className="header-section-container" id="hsc-left">
@@ -74,7 +78,13 @@ const Header: React.FC<HeaderProps> = ({
           </button>
           <ul className="header-dropdown-item-container" id="hdic-settings">
             <li className="header-dropdown-item setting-item">
-              <button className="change-theme-button" onClick={() => toggleTheme()}>{"🌙"}</button>
+              <button className="change-theme-button"
+                onClick={() => {
+                  themeIconRef.current = !darkTheme ? themeIcons.dark : themeIcons.light;
+                  toggleTheme();
+                }}>
+                {themeIconRef.current}
+              </button>
             </li>
             <li className="header-dropdown-item setting-item">
               <button className="change-language-button"
