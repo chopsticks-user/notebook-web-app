@@ -34,19 +34,23 @@
     white-space: pre;
 }
 
+.debug-view-section-content li:hover {
+    background-color: var(--menu-bg-color);
+}
+
 .minimize-panel-button {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
     width: var(--main-components-header-height);
     height: var(--main-components-header-height);
     min-width: var(--main-components-header-height);
-    background-color: transparent;
     border: none;
     cursor: pointer;
+    transition: transform 300ms ease-in-out;
 }
 
 .minimize-panel-button:hover {
     transform: rotate(90deg);
 }
-

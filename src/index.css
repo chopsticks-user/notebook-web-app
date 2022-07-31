@@ -82,6 +82,7 @@ code {
 
 .gutter {
   background-color: var(--border-color);
+  transition: padding 300ms ease-in-out;
 }
 
 .gutter-horizontal {

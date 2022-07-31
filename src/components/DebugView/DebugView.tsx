@@ -46,6 +46,7 @@ const DebugView: React.FC<DebugViewProps> = ({
           <Info
             processedScripts={processedScripts.current}
             generalTheme={generalTheme}
+            sectionThemes={sectionThemes}
           />
         }
         generalTheme={generalTheme}
@@ -82,7 +83,7 @@ const DebugSection: React.FC<DebugSectionProps> = ({
   functionality,
   generalTheme
 }) => {
-  const minimizePanelButton: string = ">";
+  const minimizePanelButton: string = ">"
 
   return (
     <div className="debug-view-section-container"
@@ -91,16 +92,15 @@ const DebugSection: React.FC<DebugSectionProps> = ({
         color: generalTheme.textColor,
       }}>
       <header className="debug-view-section-header">
-
         <button
           className="minimize-panel-button"
+          id="dvsc-mpb"
           style={{ color: generalTheme.textColor }}
           onClick={() => setCollapsed(index)}
         >
           {minimizePanelButton}
         </button>
-
-        <b>{sectionName}</b>
+        <b style={{ fontSize: "12px" }}>{sectionName}</b>
       </header>
       <div className="debug-view-section-content">
         {functionality}
@@ -116,29 +116,31 @@ const Feature = () => {
 type InfoProps = {
   processedScripts: string[];
   generalTheme: any;
+  sectionThemes: any;
 }
 
 const Info: React.FC<InfoProps> = ({
-  processedScripts, generalTheme
+  processedScripts, generalTheme, sectionThemes
 }) => {
 
-  const variableList = processedScripts
+  const infoContents = processedScripts
     .map((value, index) => {
       return (
         <li
           key={index + 1}
           style={{
             color: generalTheme.textColor,
-            listStyle: "none"
+            listStyle: "none",
+            fontSize: sectionThemes.contentFontSize,
           }}>
-          {`> [${index + 1}]: ${value}`}
+          {`+ [${index + 1}]: ${value}`}
         </li>
       );
     });
 
   return (
     <div>
-      {variableList}
+      {infoContents}
     </div>
   );
 }

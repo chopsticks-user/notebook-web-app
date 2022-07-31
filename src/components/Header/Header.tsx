@@ -62,8 +62,16 @@ const Header: React.FC<HeaderProps> = ({ sectionThemes, generalTheme }) => {
           {"N3K😽"}
         </a>
       </div>
-      <div className="header-section-container" id="hsc-right">
-
+      <div
+        className="header-section-container"
+        id="hsc-right"
+        style={{ color: generalTheme.textColor }}
+      >
+        <div className="setting-container header-right-element">S
+          <div className="language-setting-container"></div>
+        </div>
+        <div className="about-container header-right-element">About</div>
+        <div className="login-container header-right-element">Log In</div>
       </div>
     </div>
   );

@@ -61,7 +61,12 @@ const ScriptBlock: React.FC<ScriptBlockProps> = ({
     }
   }
 
-  const handleScroll = (e: any) => {
+  const indexBar: any = (e: any) => {
+    const indices: any[] = []
+    for (let i = 0; i < 50; i++) {
+      indices.push(<li style={{ color: generalTheme.textColor, listStyle: "none", fontSize: "14px" }}>{i}</li>);
+    }
+    return indices;
   }
 
   return (
@@ -69,8 +74,10 @@ const ScriptBlock: React.FC<ScriptBlockProps> = ({
       <div className="script-index-bar"
         style={{
           height: `${scriptBlockSizes?.height}px`,
-          color: generalTheme.textColor
+          color: generalTheme.textColor,
+          paddingLeft: "5px"
         }}>
+        {/* {indexBar()} */}
       </div>
       <textarea
         className="script-contents"
@@ -85,7 +92,6 @@ const ScriptBlock: React.FC<ScriptBlockProps> = ({
           fontFamily: sectionThemes.scriptFont
         }}
         onChange={handleScriptChange}
-        onScroll={handleScroll}
       />
     </div>
   );

@@ -11,10 +11,9 @@ const sectionThemes = {
 
   },
   debugView: {
-
+    contentFontSize: "14px",
   },
   workspace: {
-    scriptFont: "",
     scriptFontSize: "15px",
     indexScriptSpacing: "1rem",
     focusedLineBorder: "1px solid #505558",
