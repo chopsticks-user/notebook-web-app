@@ -94,7 +94,7 @@
 
 #hsc-right>span {
     width: 1px;
-    height: calc(var(--header-height) - 10px);
+    height: calc(var(--header-height) - 16px);
     align-self: center;
     background-color: rgb(87, 87, 87);
 }
@@ -179,8 +179,4 @@
 
 .setting-item>button:hover {
     background-color: gray;
-}
-
-.change-theme-button {
-    color: "white";
 }

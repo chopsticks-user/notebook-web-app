@@ -14,7 +14,9 @@ const WorkSpace: React.FC<WorkSpaceProps> = ({
 
   return (
     <div className="workspace-container">
-      <div className="workspace-header-container">
+      <div className="workspace-header-container"
+        style={{backgroundColor: generalTheme.sectionHeaderColor}}
+      >
 
       </div>
       <ScriptBlock

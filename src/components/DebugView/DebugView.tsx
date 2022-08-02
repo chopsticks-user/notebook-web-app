@@ -91,7 +91,10 @@ const DebugSection: React.FC<DebugSectionProps> = ({
       style={{
         color: generalTheme.textColor,
       }}>
-      <header className="debug-view-section-header">
+      <header
+        className="debug-view-section-header"
+        style={{ backgroundColor: generalTheme.sectionHeaderColor }}
+      >
         <button
           className="minimize-panel-button"
           id="dvsc-mpb"

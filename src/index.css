@@ -14,11 +14,13 @@
   --icon-letter-size: 25px;
   --icon-letter-spacing: 5px;
   --background-color: #2e2e2e;
-  --main-components-header-bg-color: #252525;
   --border-color: #505558;
   --custom-color: #1e1e24;
   --scrollbar-track-color: gray;
   --menu-bg-color: #424446;
+  
+  --gray: rgb(211, 203, 203);
+  /* --gray: rgb(151, 144, 144); */
   /* --menu-bg-color: #e0dddd; */
 }
 
@@ -36,9 +38,9 @@
   height: var(--scrollbar-width);
 }
 
-*::-webkit-scrollbar-track {
-  background-color: transparent;
-}
+/* *::-webkit-scrollbar-track {
+  background-color: "white";
+} */
 
 *::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-track-color);
