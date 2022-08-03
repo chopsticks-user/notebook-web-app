@@ -9,15 +9,31 @@ export const processRawScripts = (rawScripts: string): string[] => {
 
 export const checkErrors: any = (scripts: string[] | string) => {
     if (typeof scripts === "string") {
-        return checkErrors(processRawScripts(scripts), false);
+        return checkErrors(processRawScripts(scripts));
     }
     return;
 }
+
+// export const getCommandType: any = (processedCommand: string) => {
+//     let commandType: string = "";
+//     let started = false;
+//     for(let i = 0; i < processedCommand.length; i++) {
+//         if (processedCommand[i] === " " && started) {
+//             return "Error";
+//         }
+//         started = true;
+//         commandType += processedCommand[i];
+//     }
+// }
+
+const typenameList: string[] = [
+    "matrix", "vector", "complex", "real"
+]
 
 export const translateScripts: any = (scripts: string[] | string) => {
     if (typeof scripts === "string") {
-        return translateScripts(processRawScripts(scripts), false);
+        return translateScripts(processRawScripts(scripts));
     }
+    // if ()
     return;
 }
-

@@ -23,11 +23,23 @@ const Header: React.FC<HeaderProps> = ({
       </div>
       <HomepageShorcut iconColor={sectionThemes.textColor} homepageIcon={"N3K😾"} />
       <div className="header-section-container" id="hsc-right">
-        <SettingsMenu sectionThemes={sectionThemes} darkTheme={darkTheme} toggleTheme={toggleTheme} />
+        <SettingsMenu
+          sectionThemes={sectionThemes}
+          darkTheme={darkTheme}
+          toggleTheme={toggleTheme}
+          iconColor={sectionThemes.textColor}
+          settingsMenuIcon={"⚙"}
+        />
         <span></span>
-        <AboutMe iconColor={sectionThemes.textColor} aboutMeIcon={"About"} />
+        <AboutMe
+          iconColor={sectionThemes.textColor}
+          aboutMeIcon={"About"}
+        />
         <span></span>
-        <Login iconColor={sectionThemes.textColor} loginIcon={"Login"} />
+        <Login
+          iconColor={sectionThemes.textColor}
+          loginIcon={"Login"}
+        />
         <span></span>
       </div>
     </div>

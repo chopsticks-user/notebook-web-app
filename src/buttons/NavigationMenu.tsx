@@ -15,7 +15,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
       <ul className="header-dropdown-item-container" id="hdic-left"
         style={{ color: sectionThemes.textColor }}
       >
-        <li className="header-dropdown-item" id="hdi-1">
+        {/* <li className="header-dropdown-item" id="hdi-1">
           <a href="/"
             style={{
               color: sectionThemes.textColor,
@@ -50,7 +50,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
             }}>
             Item 4
           </a>
-        </li>
+        </li> */}
       </ul>
     </div>
   );

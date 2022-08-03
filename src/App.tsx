@@ -31,6 +31,7 @@ const generalThemes = {
   },
   light: {
     backgroundColor: "#fff",
+    // backgroundColor: "rgb(228, 217, 217)",
     sectionHeaderColor: "rgb(211, 203, 203)",
     // textColor: "#222",
     textColor: "rgb(37, 37, 37)",
