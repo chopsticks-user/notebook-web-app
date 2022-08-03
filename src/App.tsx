@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Split from "react-split";
 import DebugView from "./components/DebugView";
-import FileManager from "./components/FileManager";
+import Terminal from "./components/Terminal";
 import Header from "./components/Header";
 import LoadingPage from "./components/LoadingPage";
 import WorkSpace from "./components/Workspace/WorkSpace";
@@ -84,7 +84,7 @@ const App = () => {
             sectionThemes={currentSectionThemes.workspace}
             generalTheme={generalTheme}
           />
-          <FileManager />
+          <Terminal />
         </Split>
       </div>
       <LoadingPage />

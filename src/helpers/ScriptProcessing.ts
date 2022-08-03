@@ -14,18 +14,6 @@ export const checkErrors: any = (scripts: string[] | string) => {
     return;
 }
 
-// export const getCommandType: any = (processedCommand: string) => {
-//     let commandType: string = "";
-//     let started = false;
-//     for(let i = 0; i < processedCommand.length; i++) {
-//         if (processedCommand[i] === " " && started) {
-//             return "Error";
-//         }
-//         started = true;
-//         commandType += processedCommand[i];
-//     }
-// }
-
 const typenameList: string[] = [
     "matrix", "vector", "complex", "real"
 ]

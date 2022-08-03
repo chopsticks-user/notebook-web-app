@@ -1,4 +1,4 @@
-.file-manager-container {
+.terminal-container {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
@@ -7,6 +7,6 @@
     flex-direction: column;
 }
 
-.file-manager-header {
+.terminal-header {
     
 }
