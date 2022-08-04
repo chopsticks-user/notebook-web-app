@@ -84,7 +84,9 @@ const App = () => {
             sectionThemes={currentSectionThemes.workspace}
             generalTheme={generalTheme}
           />
-          <Terminal />
+          <Terminal
+            rawScripts={rawScripts}
+          />
         </Split>
       </div>
       <LoadingPage />

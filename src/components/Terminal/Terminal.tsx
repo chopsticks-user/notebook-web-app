@@ -1,36 +1,24 @@
 import React from 'react'
 import "./Terminal.css"
-import { complex } from "../../modules/src/Complex"
+import { complex } from "../../modules/src/typenames/Complex"
+import { tokens, defineTypename } from '../../modules/src/compiler/Tokens'
+import { processRawScripts } from "../../helpers/ScriptProcessing"
+import { Lexer } from "../../modules/src/compiler/Lexer"
 
-let arr: any = Array(10, 0);
-
-console.log(arr);
-
-arr[Symbol.iterator] = function () {
-  let i = 0;
-  let str = this;
-  return {
-    next: function () {
-      if (i >= str.length) {
-        return { done: true };
-      }
-      const value = str[i] + "a";
-      i++;
-      return { value, done: false };
-    }
-  }
+type TerminalProps = {
+  rawScripts: string;
 }
 
-for (const i of arr) {
-  console.log(i);
-}
-
-// console.log(arr);
-
-const Terminal = () => {
+const Terminal: React.FC<TerminalProps> = ({
+  rawScripts
+}) => {
   return (
-    <div className="terminal-container"></div>
-  )
+    <div className="terminal-container"
+      onClick={() => console.log(Lexer.execute(processRawScripts(rawScripts)))}
+    >
+
+    </div>
+  );
 }
 
 export default Terminal;
